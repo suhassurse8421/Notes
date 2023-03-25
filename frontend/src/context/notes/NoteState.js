@@ -20,6 +20,33 @@ const NoteState = (props) => {
             "tag": "user tag 2",
             "date": "2023-03-21T12:50:44.725Z",
             "__v": 0
+        },
+        {
+            "_id": "6419a8243c1cc8266644ca07",
+            "user": "6406cb42402301422d66dcaa",
+            "title": "user note 2",
+            "description": "user note desc 2",
+            "tag": "user tag 2",
+            "date": "2023-03-21T12:50:44.725Z",
+            "__v": 0
+        },
+        {
+            "_id": "6419a8243c1cc8266644ca07",
+            "user": "6406cb42402301422d66dcaa",
+            "title": "user note 2",
+            "description": "user note desc 2",
+            "tag": "user tag 2",
+            "date": "2023-03-21T12:50:44.725Z",
+            "__v": 0
+        },
+        {
+            "_id": "6419a8243c1cc8266644ca07",
+            "user": "6406cb42402301422d66dcaa",
+            "title": "user note 2",
+            "description": "user note desc 2",
+            "tag": "user tag 2",
+            "date": "2023-03-21T12:50:44.725Z",
+            "__v": 0
         }
     ]
 
