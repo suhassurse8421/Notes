@@ -20,18 +20,7 @@ const NoteState = (props) => {
             body: JSON.stringify({ title, description, tag }),
         });
         const jsonResponse = response.json();
-
-        console.log("Adding a new note");
-        const note = {
-            "_id": "6419a8243c4cc8266644c407",
-            "user": "6406cb42402301422d66dcaa",
-            "title": title,
-            "description": description,
-            "tag": tag,
-            "date": "2023-03-21T12:50:44.725Z",
-            "__v": 0
-        };
-        setNotes(notes.concat(note));
+        setNotes(notes.concat(jsonResponse));
     }
 
     // Add a Note
@@ -60,11 +49,8 @@ const NoteState = (props) => {
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQwNmNiNDI0MDIzMDE0MjJkNjZkY2FhIn0sImlhdCI6MTY3OTgwNDEyM30.oS1NeVYiPq00rRZRufDQo20sVbEcm6CEc8D8oNiPg2Y"
             }
         });
-
+        // eslint-disable-next-line
         const jsonResponse = response.json();
-        console.log(jsonResponse);
-
-        console.log("Deleted note with ID:", id);
 
         const newNotes = notes.filter((note) => {
             return note._id !== id
@@ -84,8 +70,8 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({ title, description, tag }),
         });
+        // eslint-disable-next-line
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
 
         let newNotes = JSON.parse(JSON.stringify(notes));
         // Logic to edit note
