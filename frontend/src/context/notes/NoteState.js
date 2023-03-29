@@ -73,32 +73,36 @@ const NoteState = (props) => {
     }
 
     // Update a Note
-    const updateNote = async (id, title, description, tag) => {
+    const editNote = async (id, title, description, tag) => {
 
         // API Call
         const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQwNmNiNDI0MDIzMDE0MjJkNjZkY2FhIn0sImlhdCI6MTY3OTgwNDEyM30.oS1NeVYiPq00rRZRufDQo20sVbEcm6CEc8D8oNiPg2Y"
             },
             body: JSON.stringify({ title, description, tag }),
         });
-        const jsonResponse = response.json();
+        const jsonResponse = await response.json();
+        console.log(jsonResponse);
 
+        let newNotes = JSON.parse(JSON.stringify(notes));
         // Logic to edit note
-        for (let index = 0; index < notes.length; index++) {
-            const element = notes[index];
+        for (let index = 0; index < newNotes.length; index++) {
+            const element = newNotes[index];
             if (element._id === id) {
-                element.title = title;
-                element.description = description;
-                element.tag = tag;
+                newNotes[index].title = title;
+                newNotes[index].description = description;
+                newNotes[index].tag = tag;
+                break;
             }
         }
+        setNotes(newNotes);
     }
 
     return (
-        <NoteContext.Provider value={{ notes, addNote, getNotes, deleteNote, updateNote }}>
+        <NoteContext.Provider value={{ notes, addNote, getNotes, deleteNote, editNote }}>
             {props.children}
         </NoteContext.Provider>
     )
